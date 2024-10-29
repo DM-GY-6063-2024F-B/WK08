@@ -1,5 +1,3 @@
-// TODO: effect based on x,y
-
 let mImg;
 
 function preload() {
@@ -14,14 +12,19 @@ function setup() {
   mImg.loadPixels();
 
   for (let idx = 0; idx < mImg.pixels.length; idx += 4) {
-    let pixIdx = idx / 4;
-    let y = int(pixIdx / mImg.width);
-    let x = pixIdx % mImg.width;
-
     let redVal = mImg.pixels[idx + 0];
     let greenVal = mImg.pixels[idx + 1];
     let blueVal = mImg.pixels[idx + 2];
     let alphaVal = mImg.pixels[idx + 3];
+
+    let pixelIsYellow = abs(redVal - greenVal) < 64 && redVal > 2 * blueVal && redVal > 16;
+
+    if (!pixelIsYellow) {
+      let lVal = (redVal + greenVal + blueVal) / 3;
+      mImg.pixels[idx + 0] = lVal;
+      mImg.pixels[idx + 1] = lVal;
+      mImg.pixels[idx + 2] = lVal;
+    }
   }
   mImg.updatePixels();
 

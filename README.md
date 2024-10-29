@@ -1,5 +1,7 @@
 # WK08
 
 - more images
+- PGraphics
 - videos
-- classes
+- ml5 library
+- The DOM

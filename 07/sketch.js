@@ -1,6 +1,6 @@
-// TODO: saving images
-
 let mImg;
+
+let mPg;
 
 function preload() {
   mImg = loadImage("../assets/arara.jpg");
@@ -26,7 +26,7 @@ function star(x, y, w, c) {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(255, 0);
+  background(0, 0);
 
   stroke(0);
   fill(255);
@@ -34,3 +34,7 @@ function setup() {
 }
 
 function draw() {}
+
+function mousePressed() {
+  save("star_mask.png")
+}
